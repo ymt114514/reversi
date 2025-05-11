@@ -73,6 +73,7 @@ else if (validMove(i,j)){
 pass=0;
 num0++;
 
+    
     if(bw==-1){fill(255, 255, 255, 200);}
     else if(bw==1){fill(0, 0, 0, 200);}
     ellipse((i-1)*side +side/2, (j-1)*side +side/2, side/3, side/3);
