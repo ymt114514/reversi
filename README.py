@@ -1,4 +1,4 @@
-# reversi！
+# reversi first board settings
 BOARD_SIZE = 8
 
 def create_board():
