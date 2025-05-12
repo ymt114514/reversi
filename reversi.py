@@ -3,7 +3,7 @@ BOARD_SIZE = 8
 BLACK = "□"
 WHITE = "■"
 EMPTY = "."
-DIRECTIONS = [(-1, -1), (-1, 0), (-1, 1),
+DIRECTIONS = [(-1, -1), (-1, 0), (-1, 1),#座標指定用
               (0, -1),          (0, 1),
               (1, -1), (1, 0), (1, 1)]
 
@@ -14,7 +14,7 @@ def create_board():
     board[mid][mid] = "■"
     board[mid - 1][mid] = "□"      
     board[mid][mid - 1] = "□"
-    return board
+    return board　　　　　　　#最初の4つ
 
 def print_board(board):
     for row in board:
@@ -56,16 +56,31 @@ def place_stone(board, row, col, player):
     if board[row][col] != ".":
         print("（そこには置け）ないです")
         return False
+
+    if not flip_stones(board, row, col, player):
+        print("（挟めて）ないです")
+        return False
+
+    board[row][col] = player
+    return True
+
+# メイン
+board = create_board()
+print_board(board)
+
+player = BLACK  # 先手：黒
+
+row = int(input(f"{player} のターン！：行 (0-7): "))
+col = int(input(f"{player} のターン！：列 (0-7): "))
+if place_stone(board, row, col, player):
+    print_board(board)
     board[row][col] = player
     return True
     
 board = create_board()
 print_board(board)
 
-# 黒のターン（□）
-row = int(input("行を入力シロォ（0〜7）: "))
-col = int(input("列も入力スルンダヨォ（0〜7）: "))
-success = place_stone(board, row, col, "□")
+
 
 if success:
     print_board(board)
